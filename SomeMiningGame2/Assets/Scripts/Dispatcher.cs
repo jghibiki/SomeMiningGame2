@@ -30,6 +30,8 @@ public class Dispatcher : MonoBehaviour {
 
 	private PauseGame pause_game_control;
 
+	private InfoPanelManager info_panel_manager;
+
 	// Use this for initialization
 	void Start () {
 		job_queue = new SimplePriorityQueue<Job>();
@@ -38,6 +40,9 @@ public class Dispatcher : MonoBehaviour {
 
 		var pauser = GameObject.Find("GamePauser");
 		pause_game_control = pauser.GetComponent<PauseGame>();
+
+		var info_panel = GameObject.Find("InfoPanel");
+		info_panel_manager = info_panel.GetComponent<InfoPanelManager>();
 
 		GameObject map_gen_game_object = GameObject.Find("MapGenerator");
 		if(map_gen_game_object != null){
@@ -48,9 +53,6 @@ public class Dispatcher : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(pause_game_control.paused){
-			return;
-		}
 
 
 		if(!started){
@@ -80,13 +82,17 @@ public class Dispatcher : MonoBehaviour {
 	}
 
 	private void HandleStep(){
-		UpdatePathfindingGrid();
+		if(!pause_game_control.paused){
+			UpdatePathfindingGrid();
+		}
 
 		HandleInput();
 
-		MonitorOngoingJobs();
+		if(!pause_game_control.paused){
+			MonitorOngoingJobs();
 
-		AssignJobsToIdlers();
+			AssignJobsToIdlers();
+		}
 
 	}
 
@@ -123,6 +129,19 @@ public class Dispatcher : MonoBehaviour {
 					// handle abort here.
 					worker.ClearJob();
 					in_progress_jobs.Remove(job);
+
+					if(job.abort_reason != null){
+						info_panel_manager.AddAlert("Job Aborted: " + job.abort_reason);
+					}
+				}
+				else if(job.postponed){
+					// handle postpone here.
+					worker.ClearJob();
+					in_progress_jobs.Remove(job);
+
+					if(job.postpone_reason != null){
+						info_panel_manager.AddAlert("Job Postponed: " + job.postpone_reason);
+					}
 
 					job_queue.Enqueue(job, job.priority);
 				}

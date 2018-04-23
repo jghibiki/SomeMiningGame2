@@ -29,12 +29,10 @@ public class Worker : Tile {
 
 	// Use this for initialization
 	void Start () {
-
 		unit_action_counter = (int)Random.Range(0f, unit_action_speed);
 
 		var pauser = GameObject.Find("GamePauser");
 		pause_game_control = pauser.GetComponent<PauseGame>();
-		
 	}
 	
 	// Update is called once per frame
@@ -101,8 +99,7 @@ public class Worker : Tile {
 							job.Cancel();
 						}
 						else {
-							Debug.Log("Giving up!");
-							job.Abort();
+							job.Abort("Could not find path to job.");
 						}
 					}
 					else if(path.Count > 1){
