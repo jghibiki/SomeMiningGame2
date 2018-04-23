@@ -1,0 +1,30 @@
+fileFormatVersion: 2
+guid: 906664d7ea7e54368bfa1917f403dff3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - grass_prefab: {fileID: 1363508571131190, guid: 9e16c6351ad364842886771d49ed39a9,
+      type: 2}
+  - coal_deposit_prefab: {fileID: 1805928423656038, guid: 53076475930314706816c2ef5324d2bd,
+      type: 2}
+  - iron_deposit_prefab: {fileID: 1953497254136362, guid: 9c098809aea95404884b739c43ad5782,
+      type: 2}
+  - stone_deposit_prefab: {fileID: 1829343435869472, guid: 816d9790bd067435dac684dc4350c349,
+      type: 2}
+  - copper_deposit_prefab: {fileID: 1020949880866616, guid: 48c2719cd98f647e096586271b887622,
+      type: 2}
+  - unit_1: {fileID: 1480200190211920, guid: ba33d00a54d0b468b881ddb088418511, type: 2}
+  - unit_2: {fileID: 1935440958608860, guid: 8a933a1e24aea4b419767df7a65a1b0d, type: 2}
+  - unit_3: {fileID: 1774971040020708, guid: 284ea9cfb58a948b1b733a2e58606cb7, type: 2}
+  - add_new_job_marker: {fileID: 1410269803389730, guid: a9d65b2b35df242ecb44983536f978af,
+      type: 2}
+  - hover_job_marker: {fileID: 1421600782699158, guid: ee31f59df07ad47329b8fd67c0f39395,
+      type: 2}
+  - idle_job_marker: {fileID: 1001354431117806, guid: 2a6fc69e509b6429cbe7c51cf3f9aa28,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
