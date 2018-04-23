@@ -39,7 +39,9 @@ public class Worker : Tile {
 		// pick random name
 		int index = (int)Random.Range(0f, (float)WorkerNames.names.Count);
 		name = WorkerNames.names[index];
-		name = char.ToUpper(name[0]) + name.Substring(1);
+		var split_name = name.Split(null);
+		name = char.ToUpper(split_name[0][0]) + split_name[0].Substring(1) + " " 
+					+ char.ToUpper(split_name[1][0]) + split_name[1].Substring(1);
 	}
 	
 	// Update is called once per frame
