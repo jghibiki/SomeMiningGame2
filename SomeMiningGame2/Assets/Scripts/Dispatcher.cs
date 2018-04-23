@@ -131,7 +131,7 @@ public class Dispatcher : MonoBehaviour {
 					in_progress_jobs.Remove(job);
 
 					if(job.abort_reason != null){
-						info_panel_manager.AddAlert("Job Aborted: " + job.abort_reason);
+						info_panel_manager.AddAlert(worker.name + ": Job Aborted: " + job.abort_reason);
 					}
 				}
 				else if(job.postponed){
@@ -140,7 +140,7 @@ public class Dispatcher : MonoBehaviour {
 					in_progress_jobs.Remove(job);
 
 					if(job.postpone_reason != null){
-						info_panel_manager.AddAlert("Job Postponed: " + job.postpone_reason);
+						info_panel_manager.AddAlert(worker.name + ": Job Postponed: " + job.postpone_reason);
 					}
 
 					job_queue.Enqueue(job, job.priority);

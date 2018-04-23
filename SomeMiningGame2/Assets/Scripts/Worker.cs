@@ -9,6 +9,8 @@ public class Worker : Tile {
 	public int unit_action_speed = 10;
 	private int unit_action_counter = 0;
 
+	public string name;
+
 	private Job job;
 	private Dispatcher dispatcher;
 	private List<PathFind.Point> path;
@@ -33,6 +35,11 @@ public class Worker : Tile {
 
 		var pauser = GameObject.Find("GamePauser");
 		pause_game_control = pauser.GetComponent<PauseGame>();
+
+		// pick random name
+		int index = (int)Random.Range(0f, (float)WorkerNames.names.Count);
+		name = WorkerNames.names[index];
+		name = char.ToUpper(name[0]) + name.Substring(1);
 	}
 	
 	// Update is called once per frame
